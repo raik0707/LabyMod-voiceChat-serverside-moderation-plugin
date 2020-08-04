@@ -1,13 +1,15 @@
-plugins {
-    id 'java'
-}
+defaultTasks 'build'
 
-group 'de.raik'
-version '1.0-SNAPSHOT'
+allprojects {
+    apply plugin: 'java'
 
-repositories {
-    mavenCentral()
-}
+    group "dev.raik"
+    version project.hasProperty("library.version") ? project.findProperty("library.version") : 'HEAD-SNAPSHOT'
 
-dependencies {
+    java {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    compileJava.options.encoding = "UTF-8"
 }
