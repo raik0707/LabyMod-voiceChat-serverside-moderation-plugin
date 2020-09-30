@@ -4,7 +4,7 @@ allprojects {
     apply plugin: 'java'
 
     group "dev.raik"
-    version project.hasProperty("library.version") ? project.findProperty("library.version") : 'HEAD-SNAPSHOT'
+    version project.hasProperty("plugin.version") ? project.findProperty("plugin.version") : 'HEAD-SNAPSHOT'
 
     java {
         sourceCompatibility = JavaVersion.VERSION_1_8

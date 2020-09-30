@@ -1,2 +1,3 @@
 rootProject.name = 'LabyMod-voiceChat-serverside-moderation-plugin'
+include 'spigot'
 
