@@ -1,0 +1,39 @@
+######################################################
+# Everything regarding changes or actions on user join
+# except mutes
+######################################################
+join-rules:
+  voicechat-allowed: true
+  # Setting for the addon requirement gui of labymod
+  addon-recommendation:
+    enabled: false
+    # Enforce the addon
+    # Will lead into kick if denying installing
+    require: true
+    # Will automatically kick non labymod players
+    # to request the voicechat
+    # Only applies if require is true
+    require-everyone: true
+  # You are able to enforce voicechat settings using the labymod voicechat
+  # This is the section for the configuration
+  enforced-settings:
+    # Enabling of the enforcement
+    enabled: false
+    # If enabled the server will force the player to change the settings again
+    always-enforce: false
+    #####
+    # Settings. If you don't want to set a setting you can just set "ignore" or "null" as value
+    ####
+    #Enabling of the voicechat
+    enable-voicechat: true
+    # Setting the value for the Microphone volume (Value between 0 and 10)
+    microphone-volume: 10
+    # Setting for the range of hearing player (Value between 5 and 18)
+    surround-range: 18
+    # Setting for the volume of the voicechat it self (Value between 0 and 10)
+    surround-volume: 10
+    # Enabling voice activation instead of push to talk
+    voice-activiation: false
+  # If enabled the settings wont change when switching between servers on the network
+   keep-settings: true
+

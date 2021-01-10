@@ -12,7 +12,7 @@ buildscript {
 allprojects {
     apply plugin: 'java'
 
-    group "dev.raik"
+    group "de.raik"
     version project.hasProperty("plugin.version") ? project.findProperty("plugin.version") : 'HEAD-SNAPSHOT'
 
     java {
