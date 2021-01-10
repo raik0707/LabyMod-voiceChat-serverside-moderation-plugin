@@ -1,0 +1,6 @@
+name: VoiceChatMod
+version: Spigot
+main: de.raik.voicechatmod.spigot.SpigotVoiceChatPlugin
+description: Plugin to moderate the labymod voicechat serverside
+author: Raik
+

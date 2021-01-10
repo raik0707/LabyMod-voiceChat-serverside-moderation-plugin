@@ -1,4 +1,13 @@
-defaultTasks 'build'
+defaultTasks 'clean', 'build'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:6.1.0'
+    }
+}
 
 allprojects {
     apply plugin: 'java'
@@ -11,5 +20,21 @@ allprojects {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation "com.google.code.gson:gson:2.3.1"
+    }
+
     compileJava.options.encoding = "UTF-8"
+}
+
+subprojects {
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    build {
+        finalizedBy shadowJar
+    }
 }
