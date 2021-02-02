@@ -1,11 +1,44 @@
 repositories {
-    maven {
-        url 'https://papermc.io/repo/repository/maven-public/'
-    }
+    //Using maven Local to use full paper build
+    mavenLocal()
 }
 
 dependencies {
-    implementation project(':')
-    //Using 1.12.2 because of LabyMod only supporting 1.8.9 and 1.12.2
-    compileOnly 'com.destroystokyo.paper:paper-api:1.12.2-R0.1-SNAPSHOT'
+    //Using 1.8.8 paper version with full build
+    compileOnly 'org.github.paperspigot:paperspigot:1.8.8-R0.1-SNAPSHOT'
+}
+
+/**
+ * Task to setup the paper installation
+ * for using full paper as library
+ */
+task installPaper {
+    doLast {
+        /*
+         * Cloning paper in temporary folder to handle
+         * library installation from full repo
+         */
+        exec {
+            workingDir '.'
+            //Cloning only 1.8 branch to install 1.8 server
+            //Creating temp directory to there the library
+            commandLine 'git', 'clone', '--single-branch', '--branch', 'ver/1.8.8', '--no-tags', 'https://github.com/PaperMC/Paper.git', './temp-paper'
+        }
+        /*
+         * Executing the build script from paper to
+         * install the library
+         */
+        exec {
+            workingDir './temp-paper'
+            commandLine './build.sh'
+            //Setting bash executable for non unix systems
+            //To execute bash script
+            //You may need to add the arguments in the property when using git bash
+            if (project.hasProperty("bashExecutable")) {
+                commandLine project.findProperty("bashExecutable"), commandLine[0]
+            }
+        }
+        //Deleting folder to cleanup
+        delete './temp-paper'
+    }
 }
