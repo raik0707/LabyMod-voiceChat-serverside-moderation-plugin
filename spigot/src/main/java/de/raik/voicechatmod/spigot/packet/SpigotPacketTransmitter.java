@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import de.raik.voicechatmod.core.packet.PacketDispatcher;
 import de.raik.voicechatmod.core.packet.PacketTransmitter;
+import de.raik.voicechatmod.spigot.Disableable;
 import de.raik.voicechatmod.spigot.SpigotVoiceChatPlugin;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -21,11 +22,12 @@ import java.util.UUID;
  * to use the packet sending
  * Using plugin message listener
  * to track plugin messages
+ * Can be disabled to shoutdown Plugin channel listening
  *
  * @author Raik
  * @version 1.0
  */
-public class SpigotPacketTransmitter extends PacketTransmitter implements PluginMessageListener {
+public class SpigotPacketTransmitter extends PacketTransmitter implements PluginMessageListener, Disableable {
 
     /**
      * Json parser to parse strings to json element
@@ -78,5 +80,17 @@ public class SpigotPacketTransmitter extends PacketTransmitter implements Plugin
 
         //Call the packet receiving to the plugin
         this.receivePacket(player.getUniqueId(), key, content);
+    }
+
+    /**
+     * Method called by the plugin to disable
+     * the class
+     * Disabled plugin channel listening
+     *
+     * @param plugin The plugin instance which may be needed
+     */
+    @Override
+    public void disable(SpigotVoiceChatPlugin plugin) {
+        plugin.getServer().getMessenger().unregisterIncomingPluginChannel(plugin, CHANNEL);
     }
 }

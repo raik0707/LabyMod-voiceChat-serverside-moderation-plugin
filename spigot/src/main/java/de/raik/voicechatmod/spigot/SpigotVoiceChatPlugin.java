@@ -7,6 +7,8 @@ import de.raik.voicechatmod.core.plugin.VoiceChatModerationPlugin;
 import de.raik.voicechatmod.spigot.packet.SpigotPacketTransmitter;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashSet;
+
 /**
  * Plugin boostrap and plugin instance for spigot
  *
@@ -21,6 +23,11 @@ public class SpigotVoiceChatPlugin extends JavaPlugin implements PluginImplement
     private VoiceChatModerationPlugin moderationPlugin;
 
     /**
+     * Collection of every thing that can be disabled to mass disable it
+     */
+    private final HashSet<Disableable> thingsNeedingToDisable = new HashSet<>();
+
+    /**
      * Getter for the packet transmitter
      * set by the implementation
      *
@@ -29,6 +36,16 @@ public class SpigotVoiceChatPlugin extends JavaPlugin implements PluginImplement
      */
     @Override
     public PacketTransmitter getPacketTransmitter(PacketDispatcher dispatcher) {
-        return new SpigotPacketTransmitter(dispatcher, this);
+        SpigotPacketTransmitter transmitter = new SpigotPacketTransmitter(dispatcher, this);
+        this.thingsNeedingToDisable.add(transmitter);
+        return transmitter;
+    }
+
+    /**
+     * Spigot method to disable the plugin
+     */
+    @Override
+    public void onDisable() {
+        this.thingsNeedingToDisable.forEach(disableable -> disableable.disable(this));
     }
 }
