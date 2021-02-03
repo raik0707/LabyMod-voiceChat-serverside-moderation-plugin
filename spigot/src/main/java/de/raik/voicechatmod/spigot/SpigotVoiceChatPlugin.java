@@ -4,6 +4,7 @@ import de.raik.voicechatmod.core.packet.PacketDispatcher;
 import de.raik.voicechatmod.core.packet.PacketTransmitter;
 import de.raik.voicechatmod.core.plugin.PluginImplementation;
 import de.raik.voicechatmod.core.plugin.VoiceChatModerationPlugin;
+import de.raik.voicechatmod.spigot.packet.SpigotPacketTransmitter;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -28,6 +29,6 @@ public class SpigotVoiceChatPlugin extends JavaPlugin implements PluginImplement
      */
     @Override
     public PacketTransmitter getPacketTransmitter(PacketDispatcher dispatcher) {
-        return null;
+        return new SpigotPacketTransmitter(dispatcher, this);
     }
 }
