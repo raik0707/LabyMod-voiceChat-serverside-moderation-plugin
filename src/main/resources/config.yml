@@ -16,14 +16,16 @@ join-rules:
     require-everyone: true
   # You are able to enforce voicechat settings using the labymod voicechat
   # This is the section for the configuration
-  enforced-settings:
-    # Enabling of the enforcement
+  suggest-settings:
+    # Enabling of the suggestion
     enabled: false
+    # Onforce the settings once at the beginning
+    enforce: true
     # If enabled the server will force the player to change the settings again
     always-enforce: false
     #####
     # Settings. If you don't want to set a setting you can just set "ignore" or "null" as value
-    ####
+    #####
     #Enabling of the voicechat
     enable-voicechat: true
     # Setting the value for the Microphone volume (Value between 0 and 10)

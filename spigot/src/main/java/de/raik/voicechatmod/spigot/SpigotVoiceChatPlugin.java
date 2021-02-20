@@ -42,6 +42,15 @@ public class SpigotVoiceChatPlugin extends JavaPlugin implements PluginImplement
     }
 
     /**
+     * Enabling method called by spigot
+     */
+    @Override
+    public void onEnable() {
+        //Creating default config
+        this.saveDefaultConfig();
+    }
+
+    /**
      * Spigot method to disable the plugin
      */
     @Override
