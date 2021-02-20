@@ -1,9 +1,11 @@
 package de.raik.voicechatmod.spigot;
 
+import de.raik.voicechatmod.core.join.JoinEventCaller;
 import de.raik.voicechatmod.core.packet.PacketDispatcher;
 import de.raik.voicechatmod.core.packet.PacketTransmitter;
 import de.raik.voicechatmod.core.plugin.PluginImplementation;
 import de.raik.voicechatmod.core.plugin.VoiceChatModerationPlugin;
+import de.raik.voicechatmod.spigot.join.SpigotJoinEventConverter;
 import de.raik.voicechatmod.spigot.packet.SpigotPacketTransmitter;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -39,6 +41,17 @@ public class SpigotVoiceChatPlugin extends JavaPlugin implements PluginImplement
         SpigotPacketTransmitter transmitter = new SpigotPacketTransmitter(dispatcher, this);
         this.thingsNeedingToDisable.add(transmitter);
         return transmitter;
+    }
+
+    /**
+     * Setting up the the join converter for the server
+     * software
+     *
+     * @param caller The join event caller for setting up transmitting
+     */
+    @Override
+    public void setupJoinConverter(JoinEventCaller caller) {
+        new SpigotJoinEventConverter(caller, this);
     }
 
     /**
