@@ -1,10 +1,12 @@
 package de.raik.voicechatmod.spigot;
 
+import de.raik.voicechatmod.core.implementation.Config;
 import de.raik.voicechatmod.core.implementation.join.JoinEventCaller;
 import de.raik.voicechatmod.core.implementation.packet.PacketDispatcher;
 import de.raik.voicechatmod.core.implementation.packet.PacketTransmitter;
 import de.raik.voicechatmod.core.plugin.PluginImplementation;
 import de.raik.voicechatmod.core.plugin.VoiceChatModerationPlugin;
+import de.raik.voicechatmod.spigot.config.SpigotConfig;
 import de.raik.voicechatmod.spigot.join.SpigotJoinEventConverter;
 import de.raik.voicechatmod.spigot.packet.SpigotPacketTransmitter;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -55,12 +57,21 @@ public class SpigotVoiceChatPlugin extends JavaPlugin implements PluginImplement
     }
 
     /**
+     * Getting the main config file from
+     * the sub module to manage it
+     *
+     * @return The config
+     */
+    @Override
+    public Config getMainConfig() {
+        return new SpigotConfig(this);
+    }
+
+    /**
      * Enabling method called by spigot
      */
     @Override
     public void onEnable() {
-        //Creating default config
-        this.saveDefaultConfig();
     }
 
     /**
