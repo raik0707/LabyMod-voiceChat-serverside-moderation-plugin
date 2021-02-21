@@ -2,8 +2,8 @@ package de.raik.voicechatmod.spigot.packet;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import de.raik.voicechatmod.core.packet.PacketDispatcher;
-import de.raik.voicechatmod.core.packet.PacketTransmitter;
+import de.raik.voicechatmod.core.implementation.packet.PacketDispatcher;
+import de.raik.voicechatmod.core.implementation.packet.PacketTransmitter;
 import de.raik.voicechatmod.spigot.Disableable;
 import de.raik.voicechatmod.spigot.SpigotVoiceChatPlugin;
 import io.netty.buffer.ByteBuf;

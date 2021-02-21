@@ -1,4 +1,4 @@
-package de.raik.voicechatmod.core.join;
+package de.raik.voicechatmod.core.implementation.join;
 
 import java.util.HashMap;
 import java.util.HashSet;

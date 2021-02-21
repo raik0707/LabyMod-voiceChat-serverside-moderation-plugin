@@ -1,8 +1,8 @@
 package de.raik.voicechatmod.spigot;
 
-import de.raik.voicechatmod.core.join.JoinEventCaller;
-import de.raik.voicechatmod.core.packet.PacketDispatcher;
-import de.raik.voicechatmod.core.packet.PacketTransmitter;
+import de.raik.voicechatmod.core.implementation.join.JoinEventCaller;
+import de.raik.voicechatmod.core.implementation.packet.PacketDispatcher;
+import de.raik.voicechatmod.core.implementation.packet.PacketTransmitter;
 import de.raik.voicechatmod.core.plugin.PluginImplementation;
 import de.raik.voicechatmod.core.plugin.VoiceChatModerationPlugin;
 import de.raik.voicechatmod.spigot.join.SpigotJoinEventConverter;

@@ -1,4 +1,4 @@
-package de.raik.voicechatmod.core.packet;
+package de.raik.voicechatmod.core.implementation.packet;
 
 import com.google.gson.JsonElement;
 

@@ -1,8 +1,8 @@
 package de.raik.voicechatmod.spigot.join;
 
-import de.raik.voicechatmod.core.join.JoinEventCaller;
-import de.raik.voicechatmod.core.join.JoinEventConverter;
-import de.raik.voicechatmod.core.join.JoinType;
+import de.raik.voicechatmod.core.implementation.join.JoinEventCaller;
+import de.raik.voicechatmod.core.implementation.join.JoinEventConverter;
+import de.raik.voicechatmod.core.implementation.join.JoinType;
 import de.raik.voicechatmod.spigot.SpigotVoiceChatPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;

@@ -1,4 +1,4 @@
-package de.raik.voicechatmod.core.join;
+package de.raik.voicechatmod.core.implementation.join;
 
 /**
  * Enum representing the two different join

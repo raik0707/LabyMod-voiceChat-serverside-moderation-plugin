@@ -1,7 +1,7 @@
 package de.raik.voicechatmod.core.plugin;
 
-import de.raik.voicechatmod.core.join.JoinEventCaller;
-import de.raik.voicechatmod.core.packet.PacketDispatcher;
+import de.raik.voicechatmod.core.implementation.join.JoinEventCaller;
+import de.raik.voicechatmod.core.implementation.packet.PacketDispatcher;
 
 /**
  * Plugin instance for controlling
@@ -36,6 +36,7 @@ public class VoiceChatModerationPlugin {
     public VoiceChatModerationPlugin(PluginImplementation pluginBoostrap) {
         this.pluginBoostrap = pluginBoostrap;
 
+        //Calling bootstrap methods to set anything up
         this.packetDispatcher = new PacketDispatcher(pluginBoostrap);
         pluginBoostrap.setupJoinConverter(this.joinEventCaller);
     }
