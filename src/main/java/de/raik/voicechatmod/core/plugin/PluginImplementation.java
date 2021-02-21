@@ -1,5 +1,6 @@
 package de.raik.voicechatmod.core.plugin;
 
+import de.raik.voicechatmod.core.implementation.Config;
 import de.raik.voicechatmod.core.implementation.join.JoinEventCaller;
 import de.raik.voicechatmod.core.implementation.packet.PacketDispatcher;
 import de.raik.voicechatmod.core.implementation.packet.PacketTransmitter;
@@ -29,5 +30,13 @@ public interface PluginImplementation {
      * @param caller The join event caller for setting up transmitting
      */
     void setupJoinConverter(JoinEventCaller caller);
+
+    /**
+     * Getting the main config file from
+     * the sub module to manage it
+     *
+     * @return The config
+     */
+    Config getMainConfig();
 
 }
