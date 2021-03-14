@@ -3,6 +3,10 @@ package de.raik.voicechatmod.core.plugin;
 import de.raik.voicechatmod.core.implementation.Config;
 import de.raik.voicechatmod.core.implementation.join.JoinEventCaller;
 import de.raik.voicechatmod.core.implementation.packet.PacketDispatcher;
+import de.raik.voicechatmod.core.implementation.user.User;
+import de.raik.voicechatmod.core.implementation.user.UserProvider;
+
+import java.util.UUID;
 
 /**
  * Plugin instance for controlling
@@ -35,6 +39,11 @@ public class VoiceChatModerationPlugin {
     private final Config config;
 
     /**
+     * The user provider to get the config
+     */
+    private final UserProvider userProvider;
+
+    /**
      * Constructor for creating the plugin
      *
      * @param pluginBoostrap The plugin bootstrap for connection
@@ -46,5 +55,17 @@ public class VoiceChatModerationPlugin {
         this.packetDispatcher = new PacketDispatcher(pluginBoostrap);
         pluginBoostrap.setupJoinConverter(this.joinEventCaller);
         this.config = pluginBoostrap.getMainConfig();
+        this.userProvider = pluginBoostrap.getUserProvider();
+    }
+
+    /**
+     * Method to receive to user from a
+     * uuid
+     *
+     * @param uuid The players uuid
+     * @return The user
+     */
+    public User getUser(UUID uuid) {
+        return this.userProvider.getUser(uuid);
     }
 }

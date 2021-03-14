@@ -4,6 +4,7 @@ import de.raik.voicechatmod.core.implementation.Config;
 import de.raik.voicechatmod.core.implementation.join.JoinEventCaller;
 import de.raik.voicechatmod.core.implementation.packet.PacketDispatcher;
 import de.raik.voicechatmod.core.implementation.packet.PacketTransmitter;
+import de.raik.voicechatmod.core.implementation.user.UserProvider;
 
 /**
  * Implementation collection for
@@ -38,5 +39,13 @@ public interface PluginImplementation {
      * @return The config
      */
     Config getMainConfig();
+
+    /**
+     * Getting the user provider from
+     * the implementation
+     *
+     * @return The provider
+     */
+    UserProvider getUserProvider();
 
 }

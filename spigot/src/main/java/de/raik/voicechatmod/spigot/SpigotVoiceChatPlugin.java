@@ -4,11 +4,13 @@ import de.raik.voicechatmod.core.implementation.Config;
 import de.raik.voicechatmod.core.implementation.join.JoinEventCaller;
 import de.raik.voicechatmod.core.implementation.packet.PacketDispatcher;
 import de.raik.voicechatmod.core.implementation.packet.PacketTransmitter;
+import de.raik.voicechatmod.core.implementation.user.UserProvider;
 import de.raik.voicechatmod.core.plugin.PluginImplementation;
 import de.raik.voicechatmod.core.plugin.VoiceChatModerationPlugin;
 import de.raik.voicechatmod.spigot.config.SpigotConfig;
 import de.raik.voicechatmod.spigot.join.SpigotJoinEventConverter;
 import de.raik.voicechatmod.spigot.packet.SpigotPacketTransmitter;
+import de.raik.voicechatmod.spigot.user.SpigotUserProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashSet;
@@ -65,6 +67,17 @@ public class SpigotVoiceChatPlugin extends JavaPlugin implements PluginImplement
     @Override
     public Config getMainConfig() {
         return new SpigotConfig(this);
+    }
+
+    /**
+     * Getting the user provider from
+     * the implementation
+     *
+     * @return The provider
+     */
+    @Override
+    public UserProvider getUserProvider() {
+        return new SpigotUserProvider();
     }
 
     /**

@@ -1,16 +1,16 @@
-package de.raik.voicechatmod.core.implementation.player;
+package de.raik.voicechatmod.core.implementation.user;
 
 /**
  * Interface representing a player instance
- * for manipulate or handle a player
+ * for manipulate or handle a user
  *
  * @author Raik
  * @version 1.0
  */
-public interface Player {
+public interface User {
 
     /**
-     * Method to kick the player from
+     * Method to kick the user from
      * the server
      *
      * @param reason The reason of the kick
@@ -18,7 +18,7 @@ public interface Player {
     void kick(String reason);
 
     /**
-     * Method to send a message to a player
+     * Method to send a message to a user
      *
      * @param message The message to send
      */
