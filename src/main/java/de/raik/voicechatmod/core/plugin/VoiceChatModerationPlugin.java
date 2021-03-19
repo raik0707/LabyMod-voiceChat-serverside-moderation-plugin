@@ -1,11 +1,13 @@
 package de.raik.voicechatmod.core.plugin;
 
 import de.raik.voicechatmod.core.implementation.Config;
+import de.raik.voicechatmod.core.implementation.Scheduler;
 import de.raik.voicechatmod.core.implementation.join.JoinEventCaller;
 import de.raik.voicechatmod.core.implementation.packet.PacketDispatcher;
 import de.raik.voicechatmod.core.implementation.user.User;
 import de.raik.voicechatmod.core.implementation.user.UserProvider;
 
+import java.util.HashSet;
 import java.util.UUID;
 
 /**
@@ -44,6 +46,16 @@ public class VoiceChatModerationPlugin {
     private final UserProvider userProvider;
 
     /**
+     * Scheduler to execute tasks later or repeating
+     */
+    private final Scheduler scheduler;
+
+    /**
+     * A hashset representing every voicechat user
+     */
+    private final HashSet<User> voiceUsers = new HashSet<>();
+
+    /**
      * Constructor for creating the plugin
      *
      * @param pluginBoostrap The plugin bootstrap for connection
@@ -56,6 +68,7 @@ public class VoiceChatModerationPlugin {
         pluginBoostrap.setupJoinConverter(this.joinEventCaller);
         this.config = pluginBoostrap.getMainConfig();
         this.userProvider = pluginBoostrap.getUserProvider();
+        this.scheduler = pluginBoostrap.getScheduler();
     }
 
     /**

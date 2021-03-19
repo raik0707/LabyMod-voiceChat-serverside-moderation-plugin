@@ -1,6 +1,7 @@
 package de.raik.voicechatmod.core.plugin;
 
 import de.raik.voicechatmod.core.implementation.Config;
+import de.raik.voicechatmod.core.implementation.Scheduler;
 import de.raik.voicechatmod.core.implementation.join.JoinEventCaller;
 import de.raik.voicechatmod.core.implementation.packet.PacketDispatcher;
 import de.raik.voicechatmod.core.implementation.packet.PacketTransmitter;
@@ -47,5 +48,12 @@ public interface PluginImplementation {
      * @return The provider
      */
     UserProvider getUserProvider();
+
+    /**
+     * Getting the scheduler from the implemtation
+     *
+     * @return The scheduler
+     */
+    Scheduler getScheduler();
 
 }

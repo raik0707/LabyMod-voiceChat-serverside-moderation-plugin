@@ -1,6 +1,7 @@
 package de.raik.voicechatmod.spigot;
 
 import de.raik.voicechatmod.core.implementation.Config;
+import de.raik.voicechatmod.core.implementation.Scheduler;
 import de.raik.voicechatmod.core.implementation.join.JoinEventCaller;
 import de.raik.voicechatmod.core.implementation.packet.PacketDispatcher;
 import de.raik.voicechatmod.core.implementation.packet.PacketTransmitter;
@@ -10,6 +11,7 @@ import de.raik.voicechatmod.core.plugin.VoiceChatModerationPlugin;
 import de.raik.voicechatmod.spigot.config.SpigotConfig;
 import de.raik.voicechatmod.spigot.join.SpigotJoinEventConverter;
 import de.raik.voicechatmod.spigot.packet.SpigotPacketTransmitter;
+import de.raik.voicechatmod.spigot.scheduler.SpigotScheduler;
 import de.raik.voicechatmod.spigot.user.SpigotUserProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -78,6 +80,16 @@ public class SpigotVoiceChatPlugin extends JavaPlugin implements PluginImplement
     @Override
     public UserProvider getUserProvider() {
         return new SpigotUserProvider();
+    }
+
+    /**
+     * Getting the scheduler from the implemtation
+     *
+     * @return The scheduler
+     */
+    @Override
+    public Scheduler getScheduler() {
+        return new SpigotScheduler(this);
     }
 
     /**
